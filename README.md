@@ -145,3 +145,37 @@ Prerequisites
 -  PostgreSQL server (running locally via Homebrew or Docker)
 -  Configured Cloud CLIs (aws configure, az login, or gcloud auth login)
 
+### 1. Database Setup
+Ensure you have a target database running locally:
+
+`createdb cloud_cost_detective`
+
+### 2. Backend Initialization
+```
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+### 3. Create a .env file in the backend/ folder
+
+```
+DATABASE_URL=postgresql+asyncpg://<your_username>@localhost:5432/cloud_cost_detective
+JWT_SECRET=your_generated_cryptographic_32_byte_string
+GEMINI_API_KEY=your_google_ai_studio_api_key
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+### 4. Run the API engine:
+
+`uvicorn main:app --reload --port 8000`
+
+### 5. Frontend Initialization
+```
+cd ../frontend
+npm install
+npm run dev
+```
+
+### 6. Open your browser to http://localhost:5173 to interact with the platform dashboard.
+
