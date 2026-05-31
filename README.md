@@ -177,5 +177,5 @@ npm install
 npm run dev
 ```
 
-### 6. Open your browser to http://localhost:5173 to interact with the platform dashboard.
+Open your browser to http://localhost:5173 to interact with the platform dashboard.
 
