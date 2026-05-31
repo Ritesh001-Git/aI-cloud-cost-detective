@@ -1,17 +1,27 @@
 ## AI Cloud Cost Detective - Request Flow
 
 ```
-①  User ─·─·─► React ─·─·─► FastAPI Auth ─·─·─► JWT (Azure PostgreSQL)
-
-②  User selects Resource Group ─·─·─► Python Backend
-
-③  Python ─·─·─► Azure CLI ─·─·─► Fetches all resources in RG
-
-④  Python ─·─·─► FastAPI WebSocket ─·─·─► React (live progress)
-
-⑤  Python ─·─·─► OpenAI API ─·─·─► Cost analysis
-
-⑥  Python ─·─·─► Azure PostgreSQL ─·─·─► Stores analysis history
-
-⑦  React ◄·─·─·─ Final report with suggestions & fixes
+①  User ─·─·─► React Frontend ─·─·─► FastAPI Middleware ─·─·─► Custom JWT Auth Verification (Azure PostgreSQL)
+                                                                       │
+②  User selects Provider (AWS/Azure/GCP) & Target Scope ◄───[Hydrates Scopes via API]
+         │
+         ▼
+③  FastAPI Backend ─·─·─► Multi-Cloud Registry Module
+                                 │
+                                 ├───► (AWS)   ─► Boto3 SDK ──────────┐
+                                 ├───► (Azure) ─► Azure CLI (`az`) ───┼─► Ingests Raw Infrastructure State
+                                 └───► (GCP)   ─► Google Client API ──┘
+                                                                       │
+④  FastAPI WebSocket Channel ◄─·─·─·─·─·─ [Emits Stage Milestones] ───┘
+         │
+         ▼ [Pushes Live State Packets]
+    React ProgressTracker (Timeline Stepper Visualization)
+                                                                       │
+⑤  Normalized Resource Payload ─·─·─► Gemini 2.5 Flash API ────────────┘
+                                        │ (Enforced Pydantic Schema: extra="forbid")
+                                        ▼
+⑥  Structured AI Insights ─·─·─► Azure PostgreSQL ─·─·─► Stores Comprehensive Run Ledger (JSONB)
+                                        │
+                                        ▼ [Resolves Background Task Promise]
+⑦  React Report Dashboard ◄·─·─·─·─·─·──┘ (Renders Color-Coded Severity Badges & Copyable CLI Remediation Fixes)
 ```
