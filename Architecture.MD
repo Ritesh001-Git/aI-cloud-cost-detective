@@ -1,3 +1,4 @@
+```
                                   ┌──────────────┐
                                   │  DEVELOPER   │
                                   └──────┬───────┘
@@ -64,3 +65,4 @@
                                                      │ (Interactive Reports, Severity   │
                                                      │  Badges, & Copyable CLI Fixes)   │
                                                      └──────────────────────────────────┘
+```
