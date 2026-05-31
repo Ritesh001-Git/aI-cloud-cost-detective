@@ -27,7 +27,7 @@ The application is split into a decoupled decoupled React frontend and a FastAPI
                                   │  (Docker Container)  │
                                   └──────────────────────┘
                                              │
-=============================================│=============================================
+                                             │
                                              ▼
                                       ┌──────────────┐
                                       │     USER     │
