@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen bg-ink text-slate-100 antialiased;
+    background-image:
+      radial-gradient(circle at 15% -10%, rgba(57, 230, 208, 0.12), transparent 28rem),
+      radial-gradient(circle at 85% 5%, rgba(155, 135, 245, 0.1), transparent 25rem);
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-slate-800 bg-panel/80 shadow-glow backdrop-blur;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-slate-100 outline-none transition placeholder:text-slate-600 focus:border-signal focus:ring-2 focus:ring-signal/20;
+  }
+
+  .button-primary {
+    @apply rounded-xl bg-signal px-5 py-3 font-semibold text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
