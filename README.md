@@ -179,3 +179,12 @@ npm run dev
 
 Open your browser to http://localhost:5173 to interact with the platform dashboard.
 
+## 🚀 Deployment & Operations
+Containerization
+Build the platform target block locally using Docker:
+
+`docker build -t finops-cost-detective .`
+
+## Observability & Infrastructure
+Production run environments utilize Prometheus to capture active API call latency metrics and connection metrics from the database pool, translating raw telemetry directly onto a comprehensive overview layout inside Grafana for quick infrastructure health monitoring.
+
