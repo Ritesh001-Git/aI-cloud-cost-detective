@@ -21,7 +21,7 @@ The application is split into a decoupled decoupled React frontend and a FastAPI
                                   │  DEVELOPER   │
                                   └──────┬───────┘
                                          │
-                                         ▼ [Jenkins CI/CD Pipeline]
+                                         ▼ 
                                   ┌──────────────────────┐
                                   │ AZURE CONTAINER APPS │
                                   │  (Docker Container)  │
